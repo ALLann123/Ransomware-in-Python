@@ -43,13 +43,12 @@ Lets check the file onthe victim machine
 Now inthese tutorial for the client to get their files they have to interact with the server and they can utilize netcat to do this
 
     kali> nc <server_ip> 9100                        #we use the serve ip and the port ip
-After connecting to the server you can enter the payment receipt id or something I just used 1234 in my code onthe server
-Onthe server if the payment is verified we get:
+After connecting to the server you can enter the payment receipt id or something but for the tutorial I just used 1234 in my server code for the payment to get the decryption key. 
 ![payment verified](https://github.com/user-attachments/assets/3c9bce7d-9e19-40fd-9d48-393a60a9ee5d)
-And onthe victim machine when prompted for the receipt the number was 1234 that the server expected and responded back with they key to decrypt thee file
+And onthe victim machine when prompted for the receipt the number was 1234 that the server expected and responded back with they key to decrypt the file
 ![netcat](https://github.com/user-attachments/assets/5fce1ff8-ec08-412d-b863-59a1ff7ec397)
 
-Now with the key use the decrypt.py file to decrypt the file, by copying it to a file with a name like myTopSecretKey.key and then execute the decrypt.py script which opens the file myTopSecretKey.key and takes the key as input to decrypt the users file.
+Now with the key use the decrypt.py file to decrypt the encrypted file, by copying it to a file with a name like myTopSecretKey.key and then execute the decrypt.py script which opens the file myTopSecretKey.key and takes the key as input to decrypt the victims file.
 
     kali> echo "<key_gotten_from_server>" > myTopSecretKey.key
     kali>python3 decrypt.py
