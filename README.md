@@ -3,6 +3,10 @@ Ransomware is malcious code that holds the victim machine hostage by encrypting 
 Encrypt is the process of scrambling data in as systematic way.
 In the above program we are going to use Asymetric cryptography(public key cryptography). This form of cryptography uses two pairs of keys instead of a single shared key that is it generates a public key which everyone can see and a private key which is never shared. Messages that are encrypted with a public key can only be decrypted with a single private key and vice versa. This guarantes that the messahe came from you.
 
+          kali> pip3 install cryptography
+
+NOTE: We are going to generate and use a symmetric key to encrypt the user's files. As the attacker, we will encrypt the symmetric key (used to encrypt the files) using our public key. When the program terminates, the symmetric key will be deleted.
+
 # Tutorial
 We first generate a pair of public and private keys using openssl library which is a build in tool on kali linux.
 
