@@ -49,7 +49,7 @@ Onthe server if the payment is verified we get:
 And onthe victim machine when prompted for the receipt the number was 1234 that the server expected and responded back with they key to decrypt thee file
 ![netcat](https://github.com/user-attachments/assets/5fce1ff8-ec08-412d-b863-59a1ff7ec397)
 
-Now with the key use the decrypt.py file to decrypt the file, and the victim copied it to a file with a name like myTopSecretKey.key and the executes the decrypt.py script which opens the file myTopSecretKey.key and takes the key as input to decrypt the users file.
+Now with the key use the decrypt.py file to decrypt the file, by copying it to a file with a name like myTopSecretKey.key and then execute the decrypt.py script which opens the file myTopSecretKey.key and takes the key as input to decrypt the users file.
 
     kali> echo "<key_gotten_from_server>" > myTopSecretKey.key
     kali>python3 decrypt.py
