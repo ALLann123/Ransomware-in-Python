@@ -1,11 +1,11 @@
 # Ransomware-in-Python
 Ransomware is malcious code that holds the victim machine hostage by encrypting its files.
 Encrypt is the process of scrambling data in as systematic way.
-In the above program we are going to use Asymetric cryptography(public key cryptography). This form of cryptography uses two pairs of keys instead of a single shared key that is it generates a public key which everyone can see and a private key which is never shared. Messages that are encrypted with a public key can only be decrypted with a single private key and vice versa. This guarantes that the messahe came from you.
+In the above program, we are going to use asymmetric cryptography (public key cryptography). This form of cryptography uses two keys instead of a single shared key. We generate a public key, which everyone can see, and a private key, which is never shared. Messages encrypted with a public key can only be decrypted with the corresponding private key, and vice versa. This guarantees that the message came from you.
 
           kali> pip3 install cryptography
 
-NOTE: We are going to generate and use a symmetric key to encrypt the user's files. As the attacker, we will encrypt the symmetric key (used to encrypt the files) using our public key. When the program terminates, the symmetric key will be deleted.
+NOTE: We will generate and use a symmetric key to encrypt the user's files. As attackers, we will encrypt the symmetric key (used for encrypting the files) using our public key. Once the program terminates, the symmetric key will be deleted.
 
 # Tutorial
 We first generate a pair of public and private keys using openssl library which is a build in tool on kali linux.
@@ -22,10 +22,9 @@ Extract the private key from the file using the command
 
 # Advanced Ransomware
 We have three scripts, namely ransom_server.py, ransom_client.py, and decrypt.py.
+The ransom_server.py script sets up a server using Python's socketserver library, enabling it to handle multiple connections. Its purpose is to allow the attacker to receive the encrypted symmetric key from ransom_client.py. The server will then decrypt this key to obtain the symmetric key and return it to the user after confirming that payment has been received, possibly in the form of cryptocurrency.
 
-The ransom_server.py script is used to set up a server using Python's socketserver library, enabling it to accept multiple connections. Its purpose is to allow the attacker to receive the encrypted symmetric key from ransom_client.py. The server will then use this key to generate the decrypted symmetric key, which is returned to the user after confirming that payment has been received, possibly in the form of cryptocurrency.
-
-The ransom_client.py is the payload that runs on the host to encrypt the host's files and send the encrypted symmetric key used for encryption to the server. After the program has finished running, Python's memory management is responsible for erasing the symmetric key stored in the computer's memory.
+The ransom_client.py script is the payload that runs on the host, encrypting the host's files and sending the encrypted symmetric key used for encryption to the server. Once the program finishes running, Python's memory management ensures that the symmetric key stored in the computer's memory is erased.
 
 The decrypt file will be used bythe victim to decrypt there files when the user gets the symmetric key after paying the ransom.
 
